@@ -1,0 +1,41 @@
+{
+  "name": "zkarb-sdk",
+  "version": "1.0.14",
+  "description": "A zero-knowledge proof SDK for compiling Circom circuits and deploying Solidity verifiers to Arbitrum.",
+  "main": "./bin/index.js",
+  "bin": {
+    "zkarb-sdk": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zk",
+    "circom",
+    "snarkjs",
+    "arbitrum",
+    "solidity",
+    "zkp"
+  ],
+  "author": "Jatin Sahijwani",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "circom": "^0.5.37",
+    "circomlib": "^2.0.5",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.0",
+    "snarkjs": "^0.7.5",
+    "solc": "^0.8.29",
+    "web3": "^1.10.0"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "circomlib",
+    "ptau",
+    "pot12_0000.ptau",
+    "pot12_0001.ptau",
+    "README.md"
+  ]
+}
