@@ -1,0 +1,29 @@
+{
+  "name": "zkarb-sdk",
+  "version": "1.0.0",
+  "description": "Zero-knowledge SDK for Circom → Solidity → Arbitrum verifier deployment and proof verification.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jatinsahijwani/zkArb-sdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jatinsahijwani/zkArb-sdk/issues"
+  },
+  "homepage": "https://github.com/jatinsahijwani/zkArb-sdk#readme",
+  "dependencies": {
+    "commander": "^14.0.1",
+    "fs-extra": "^11.3.2"
+  }
+}
