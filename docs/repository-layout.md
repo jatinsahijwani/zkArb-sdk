@@ -1,4 +1,4 @@
-# 🧱 zkArb SDK – Repository Layout
+# zkArb SDK – Repository Layout
 
 This document provides an overview of the **zkArb SDK** repository structure and explains the purpose of each directory and file.  
 
@@ -12,13 +12,19 @@ It is intended to help new contributors and maintainers understand how the proje
 zkArb-sdk/
 ├── bin/
 │ └── cli.js
+| └── circom
 ├── docs/
+│ └── built-artifacts.md
 │ ├── cli-outline.md
 │ ├── DEVLOG.md
 │ └── repository-layout.md
+├── ptau/
+│ └── pot12_final.ptau
 ├── .gitignore
 ├── LICENSE
 ├── package.json
+├── pot12_0000.ptau
+├── pot12_0001.ptau
 └── README.md
 ```
 
