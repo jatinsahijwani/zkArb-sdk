@@ -18,6 +18,8 @@ zkArb-sdk/
 │ ├── cli-outline.md
 │ ├── DEVLOG.md
 │ └── repository-layout.md
+├── lib/
+│ └── compile.js
 ├── ptau/
 │ └── pot12_final.ptau
 ├── .gitignore
