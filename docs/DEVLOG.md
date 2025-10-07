@@ -1,16 +1,17 @@
 # zkArb SDK – Daily Dev Log
 
-## Oct 6, 2025
-**Branch:** feat/cli-outline
+## Oct 7, 2025
+**Branch:** docs/ptau-circom-docs
 
 **Tasks Completed:**
-- Initialized CLI folder structure:
-  - `bin/cli.js` as entry point
-  - `lib/` folder for future commands
-- Created `docs/DEVLOG.md` to track work
-- Added initial `README.md` with project overview
-- Created `examples/` folder for sample circuits
+- Added detailed documentation for build artifacts and trusted setup files:
+  - Created `docs/build-artifacts.md` describing `.ptau`, `circom`, etc
+  - Included repository-specific artifact locations for `circom` and `ptau` files.
+- Updated `docs/repository-layout.md` to reflect the current file structure.
+- Added descriptive comments to `bin/cli.js` for the compile command.
+- Improved documentation consistency across all markdown files in the `docs/` directory.
 
 **Notes / Next Steps:**
-- Plan first functional command (compile command)
-- Integrate initial placeholder commands in `commands/` folder
+- Implement the `compile` function logic inside `bin/cli.js`.
+- Add automatic `.ptau` file management (download or link verification).
+- Begin drafting documentation for proof generation and verifier deployment workflow.
