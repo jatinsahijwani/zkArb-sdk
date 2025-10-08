@@ -11,17 +11,21 @@ It is intended to help new contributors and maintainers understand how the proje
 ```
 zkArb-sdk/
 ├── bin/
-│ └── cli.js
-| └── circom
+│   ├── cli.js
+│   └── circom
 ├── docs/
-│ └── built-artifacts.md
-│ ├── cli-outline.md
-│ ├── DEVLOG.md
-│ └── repository-layout.md
+│   ├── build-artifacts.md
+│   ├── cli-outline.md
+│   ├── DEVLOG.md
+│   └── repository-layout.md
 ├── lib/
-│ └── compile.js
+│   └── compile.js
 ├── ptau/
-│ └── pot12_final.ptau
+│   └── pot12_final.ptau
+├── test/
+│   ├── circom/
+│   │   └── simple.circom
+│   └── compile.test.js
 ├── .gitignore
 ├── LICENSE
 ├── package.json
@@ -29,6 +33,7 @@ zkArb-sdk/
 ├── pot12_0001.ptau
 └── README.md
 ```
+
 
 ## 📁 Folder Details
 
