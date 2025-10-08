@@ -11,8 +11,8 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "test": "jest --detectOpenHandles"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jatinsahijwani/zkArb-sdk.git"
@@ -46,5 +46,8 @@
     "pot12_0000.ptau",
     "pot12_0001.ptau",
     "README.md"
-  ]
+  ],
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
