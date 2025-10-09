@@ -35,11 +35,7 @@ program
   .description('Compile a circom circuit')
   .action((circomFilePath) => {
     // TODO: Call compile function here once implemented.
-    // Example:
-    // const { compileCircuit } = require('../lib/compiler');
-    // compileCircuit(circomFilePath);
-    
-    console.log(`Compiling circuit: ${circomFilePath}`);
+    compileCircuit(circomFilePath);
   });
 
 /**
