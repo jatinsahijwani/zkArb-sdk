@@ -12,7 +12,7 @@
  */
 
 const { program } = require('commander');
-
+const {compileCircuit} = require('../lib/compile');
 /**
  * Define the `compile` command
  * ----------------------------
