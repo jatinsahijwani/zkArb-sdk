@@ -7,7 +7,7 @@ const { compileCircuit } = require("../lib/compile");
 const tempDir = path.join(__dirname, "temp_tests");
 
 describe("zkArb compile command", () => {
-  const circuitPath = path.join(__dirname, "examples","circom", "simple.circom");
+  const circuitPath = path.join(__dirname,"circom", "simple.circom");
 
   beforeAll(async () => {
     await fs.ensureDir(tempDir);
