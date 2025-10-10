@@ -22,6 +22,14 @@ zkArb-sdk/
 │   └── compile.js
 ├── ptau/
 │   └── pot12_final.ptau
+├── simple/                          
+│   ├── circuit_final.zkey           
+│   ├── simple.r1cs                  
+│   ├── verifier.sol                 
+│   └── simple_js/                   
+│       ├── simple.wasm              
+│       ├── generate_witness.js      
+│       └── witness_calculator.js    
 ├── test/
 │   ├── circom/
 │   │   └── simple.circom
