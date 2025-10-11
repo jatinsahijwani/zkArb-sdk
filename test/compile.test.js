@@ -1,52 +1,38 @@
 const fs = require("fs-extra");
 const path = require("path");
 const { compileCircuit } = require("../lib/compile");
-const tempDir = path.join(__dirname, "temp_tests");
 
 describe("zkArb compile command", () => {
-  const circuitPath = path.join(__dirname, "circom", "simple.circom");
+  const circuitsDir = path.join(__dirname, "circom");
+
+  // Dynamically list all .circom files in the test/circom directory
+  const circuitFiles = fs.readdirSync(circuitsDir).filter(f => f.endsWith(".circom"));
 
   beforeAll(async () => {
-    await fs.ensureDir(tempDir);
+    console.log(`🧪 Found ${circuitFiles.length} circuits to test:`, circuitFiles);
   });
 
-  afterAll(async () => {
-    await fs.remove(tempDir);
-  });
-
-  test("compiles circuit successfully and cleans up completely", async () => {
-    await compileCircuit(circuitPath);
-
-    const baseName = path.basename(circuitPath, ".circom");
+  for (const circuitFile of circuitFiles) {
+    const circuitPath = path.join(circuitsDir, circuitFile);
+    const baseName = path.basename(circuitFile, ".circom");
     const outDir = path.join(process.cwd(), baseName);
     const wasmDir = path.join(outDir, `${baseName}_js`);
 
-    const expectedFiles = [
-      path.join(outDir, `${baseName}.r1cs`),
-      path.join(outDir, "circuit_final.zkey"),
-      path.join(outDir, "verifier.sol"),
-    ];
+    test(`compiles ${circuitFile} successfully`, async () => {
+      await compileCircuit(circuitPath);
 
-    // ✅ Verify all important files exist
-    for (const file of expectedFiles) {
-      expect(fs.existsSync(file)).toBe(true);
-    }
+      // Check essential files exist
+      expect(fs.existsSync(path.join(outDir, `${baseName}.r1cs`))).toBe(true);
+      expect(fs.existsSync(path.join(outDir, "circuit_final.zkey"))).toBe(true);
+      expect(fs.existsSync(path.join(outDir, "verifier.sol"))).toBe(true);
 
-    // ✅ Clean up: remove both output and wasm directories recursively
-    try {
-      if (await fs.pathExists(wasmDir)) {
-        await fs.remove(wasmDir);
-      }
+      // ✅ Cleanup after each test
+      if (await fs.pathExists(wasmDir)) await fs.remove(wasmDir);
+      if (await fs.pathExists(outDir)) await fs.remove(outDir);
 
-      if (await fs.pathExists(outDir)) {
-        await fs.remove(outDir);
-      }
-    } catch (err) {
-      console.error(`⚠️ Cleanup failed for ${baseName}:`, err);
-    }
-
-    // Double-check that everything was deleted
-    expect(await fs.pathExists(outDir)).toBe(false);
-    expect(await fs.pathExists(wasmDir)).toBe(false);
-  });
+      // Confirm deletion
+      expect(await fs.pathExists(outDir)).toBe(false);
+      expect(await fs.pathExists(wasmDir)).toBe(false);
+    });
+  }
 });
