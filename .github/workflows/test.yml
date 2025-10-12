@@ -1,38 +1,49 @@
-name: Run Tests
+name: Node CI
 
 on:
   push:
-    branches: ["main", "feat/**", "fix/**", "test/**", "docs/**"]
+    branches:
+      - main
+      - '**/feat/**'
+      - '**/fix/**'
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x] # Test on multiple Node versions
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          node-version: 18
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Rust (required for Circom build)
+        run: |
+          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+          source $HOME/.cargo/env
+          rustc --version
+
+      - name: Build Circom from source
+        run: |
+          git clone https://github.com/iden3/circom.git
+          cd circom
+          cargo build --release
+          cargo install --path .
+          cd ..
+          mkdir -p bin
+          cp $(which circom) bin/circom
+          chmod +x bin/circom
+          circom --version  # verify build
+
       - name: Run tests
         run: npm test
-
-      - name: Upload test results (optional)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: test-results/
