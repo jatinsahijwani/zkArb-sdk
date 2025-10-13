@@ -10,32 +10,38 @@ It is intended to help new contributors and maintainers understand how the proje
 
 ```
 zkArb-sdk/
+├── .github/
+│   ├── workflows/
+│   │   └── test.yml
 ├── bin/
+│   └── circom-linux-amd64
+│   └── circom-macos-amd64
+│   └── circom-windows-amd64
 │   ├── cli.js
-│   └── circom
+│   ├── index.js
+├── circomlib/
 ├── docs/
 │   ├── build-artifacts.md
 │   ├── cli-outline.md
-│   ├── DEVLOG.md
+│   ├── compile-artifacts.md
+│   ├── cross-platform-compatibility.md
 │   └── repository-layout.md
+│   ├── test-suite.md
 ├── lib/
 │   └── compile.js
+│   └── getCircomPath.js
 ├── ptau/
 │   └── pot12_final.ptau
-├── simple/                          
-│   ├── circuit_final.zkey           
-│   ├── simple.r1cs                  
-│   ├── verifier.sol                 
-│   └── simple_js/                   
-│       ├── simple.wasm              
-│       ├── generate_witness.js      
-│       └── witness_calculator.js    
 ├── test/
 │   ├── circom/
+│   │   └── hash.circom
+│   │   └── multiplier.circom
 │   │   └── simple.circom
+│   │   └── voter.circom
 │   └── compile.test.js
 ├── .gitignore
 ├── LICENSE
+├── package-lock.json
 ├── package.json
 ├── pot12_0000.ptau
 ├── pot12_0001.ptau
