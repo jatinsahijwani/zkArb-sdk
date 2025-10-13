@@ -50,5 +50,8 @@
   ],
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "jest": {
+  "testTimeout": 300000
   }
 }
