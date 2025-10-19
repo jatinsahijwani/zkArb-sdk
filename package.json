@@ -1,6 +1,6 @@
 {
   "name": "zkarb-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zero-knowledge SDK for Circom → Solidity → Arbitrum verifier deployment and proof verification.",
   "main": "./bin/index.js",
   "bin": {
@@ -52,6 +52,6 @@
     "jest": "^29.7.0"
   },
   "jest": {
-  "testTimeout": 300000
+    "testTimeout": 300000
   }
 }
