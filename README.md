@@ -20,13 +20,17 @@ A zero-setup toolkit to build, deploy, and verify ZK circuits using Circom — w
 
 Install in your project:
 
+```bash
 npm install zkarb-sdk
+```
 
 ⚡️ Usage
 
 ### ✅ Compile Circom circuit
 
+```bash
 npx zkarb-sdk compile <path-to-your-circom-file>
+```
 
 This command:
 
@@ -37,7 +41,9 @@ This command:
 
 ### ✅ Test Compiled Circom Circuit
 
+```bash
 npx zkarb-sdk test <path-to-generated-folder> <path-to-input.json>
+```
 
 This command:
 
@@ -49,7 +55,9 @@ This command:
 
 ### ✅ Deploy Compiled Circom Circuit
 
+```bash
 npx zkarb-sdk deploy <path-to-generated-folder> <PRIVATE_KEY_OF_WALLET>
+```
 
 This command:
 
@@ -61,7 +69,8 @@ This command:
 
 You can verify a proof directly using a single function call.
 
-const { verifyProof } = require("zkarb-sdk");
+```js
+ const { verifyProof } = require("zkarb-sdk");
 
 const result = await verifyProof({
   input: {
@@ -71,7 +80,7 @@ const result = await verifyProof({
 });
 
 console.log(result ? "✅ Valid proof" : "❌ Invalid proof");
-
+```
 - You pass input (in the form of json) & Relative path to the generated folder, which was generated during compilation process
 - Automatically generates the proof and public signals
 - Formats the calldata for the Solidity verifier
