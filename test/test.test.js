@@ -1,23 +1,33 @@
-// test/test.test.js
-const { execSync } = require("child_process");
+const fs = require("fs-extra");
 const path = require("path");
+const { compileCircuit } = require("../lib/compile"); 
+const {testCircuit} = require("../lib/test");
+const tempDir = path.join(__dirname, "temp_tests");
 
-describe("zk-arb CLI Test Suite", () => {
-  const cliPath = path.resolve(__dirname, "../bin/cli.js");
-
-  test("CLI should display help without crashing", () => {
-    expect(() => {
-      execSync(`node ${cliPath} --help`, { stdio: "pipe" });
-    }).not.toThrow();
+describe("zkArb test command", () => {
+  const circuitPath = path.join(__dirname,"circom", "simple.circom");
+  beforeAll(async () => {
+    await fs.ensureDir(tempDir);
   });
 
-  test("zk-arb test command should run successfully", () => {
-    const output = execSync(`node ${cliPath} test`, { encoding: "utf-8" });
-    expect(output).toMatch(/success|passed|ok/i);
+  afterAll(async () => {
+    await fs.remove(tempDir);
   });
 
-  test("CLI version flag should return valid version number", () => {
-    const output = execSync(`node ${cliPath} --version`, { encoding: "utf-8" });
-    expect(output.trim()).toMatch(/^\d+\.\d+\.\d+$/);
+  test("compiles circuit successfully", async () => {
+    await compileCircuit(circuitPath);
+    const baseName = path.basename(circuitPath, ".circom");
+    const outDir = path.join(process.cwd(), baseName);
+
+    await testCircuit(outDir, path.join(__dirname, "json", "simple.json"));
+
+    expect(fs.existsSync(path.join(outDir, `proof.json`))).toBe(true);
+    expect(fs.existsSync(path.join(outDir, `public.json`))).toBe(true);
+
+    const wasmDir = path.join(outDir, `${baseName}_js`);
+    if (await fs.pathExists(wasmDir)) await fs.remove(wasmDir);
+    if (await fs.pathExists(outDir)) await fs.remove(outDir);
+    expect(await fs.pathExists(outDir)).toBe(false);
+    expect(await fs.pathExists(wasmDir)).toBe(false);
   });
 });
