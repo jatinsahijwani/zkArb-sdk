@@ -47,6 +47,14 @@ program
     testCircuit(folder, inputJson);
   });
 
+  program
+  .command('deploy <folder> <privateKey>')
+  .description('Deploy verifier.sol in folder to Avalanche using provided private key')
+  .action((folder, privateKey) => {
+    deployVerifier(folder, privateKey);
+  });
+
+
 /**
  * Parse CLI arguments and execute the corresponding command.
  * 
