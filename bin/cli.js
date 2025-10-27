@@ -13,7 +13,8 @@
 
 const { program } = require('commander');
 const {compileCircuit} = require('../lib/compile');
-const {testCircuit} = require('../lib/test');
+const {testCircuit} = require('../lib/test'); 
+const {deployVerifier} = require('../lib/deploy');
 
 /**
  * Define the `compile` command
@@ -46,6 +47,14 @@ program
   .action((folder, inputJson) => {
     testCircuit(folder, inputJson);
   });
+
+  program
+  .command('deploy <folder> <privateKey>')
+  .description('Deploy verifier.sol in folder to Avalanche using provided private key')
+  .action((folder, privateKey) => {
+    deployVerifier(folder, privateKey);
+  });
+
 
 /**
  * Parse CLI arguments and execute the corresponding command.
