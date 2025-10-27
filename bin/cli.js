@@ -15,6 +15,7 @@ const { program } = require('commander');
 const {compileCircuit} = require('../lib/compile');
 const {testCircuit} = require('../lib/test'); 
 const {deployVerifier} = require('../lib/deploy');
+const {verifyProof} = require('../lib/verify');
 
 /**
  * Define the `compile` command
@@ -63,3 +64,7 @@ program
  * are recognized and routed to their corresponding command handlers.
  */
 program.parse(process.argv);
+
+module.exports = {
+  verifyProof
+};    
