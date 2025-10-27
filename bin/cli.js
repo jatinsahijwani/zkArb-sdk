@@ -13,7 +13,8 @@
 
 const { program } = require('commander');
 const {compileCircuit} = require('../lib/compile');
-const {testCircuit} = require('../lib/test');
+const {testCircuit} = require('../lib/test'); 
+const {deployVerifier} = require('../lib/deploy');
 
 /**
  * Define the `compile` command
