@@ -49,12 +49,13 @@ program
     testCircuit(folder, inputJson);
   });
 
-  program
-  .command('deploy <folder> <privateKey>')
-  .description('Deploy verifier.sol in folder to Avalanche using provided private key')
-  .action((folder, privateKey) => {
-    deployVerifier(folder, privateKey);
-  });
+    program
+    .command('deploy <folder> <privateKey>')
+    .description('Deploy verifier.sol in folder to Avalanche using provided private key')
+    .option('--optimized', 'Enable verifier optimization and deploy the optimized wrapper contract')
+    .action((folder, privateKey, options) => {
+      deployVerifier(folder, privateKey, options);
+    });
 
 
 /**
