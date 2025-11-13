@@ -48,12 +48,13 @@ program
   .action((folder, inputJson) => {
     testCircuit(folder, inputJson);
   });
-
-    program
+  
+program
   .command('deploy <folder> <privateKey>')
-  .description('Deploy verifier.sol to specified Arbitrum network')
+  .description('Deploy verifier.sol to specified Arbitrum or Orbit network')
   .option('--optimized', 'Enable verifier optimization and deploy wrapper contract')
-  .option('--network <network>', 'Specify target network: one | nova | sepolia', 'one')
+  .option('--network <network>', 'Specify target network: one | nova | sepolia | orbit', 'one')
+  .option('--rpc <rpcUrl>', 'Custom RPC endpoint (for Orbit or local chains)')
   .action((folder, privateKey, options) => {
     deployVerifier(folder, privateKey, options);
   });
