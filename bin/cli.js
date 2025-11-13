@@ -50,12 +50,14 @@ program
   });
 
     program
-    .command('deploy <folder> <privateKey>')
-    .description('Deploy verifier.sol in folder to Avalanche using provided private key')
-    .option('--optimized', 'Enable verifier optimization and deploy the optimized wrapper contract')
-    .action((folder, privateKey, options) => {
-      deployVerifier(folder, privateKey, options);
-    });
+  .command('deploy <folder> <privateKey>')
+  .description('Deploy verifier.sol to specified Arbitrum network')
+  .option('--optimized', 'Enable verifier optimization and deploy wrapper contract')
+  .option('--network <network>', 'Specify target network: one | nova | sepolia', 'one')
+  .action((folder, privateKey, options) => {
+    deployVerifier(folder, privateKey, options);
+  });
+
 
 
 /**
