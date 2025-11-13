@@ -1,0 +1,46 @@
+{
+  "network": "one",
+  "rpc": "https://yellowstone-rpc.litprotocol.com/",
+  "contractName": "Groth16Verifier",
+  "contractAddress": "0x784356C3C1A096625C5869e7A56a5cd3738C9B46",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[2]",
+          "name": "_pA",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[2][2]",
+          "name": "_pB",
+          "type": "uint256[2][2]"
+        },
+        {
+          "internalType": "uint256[2]",
+          "name": "_pC",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[1]",
+          "name": "_pubSignals",
+          "type": "uint256[1]"
+        }
+      ],
+      "name": "verifyProof",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true,
+      "signature": "0x43753b4d"
+    }
+  ],
+  "isOptimized": false,
+  "deployedAt": "2025-11-13T01:05:53.324Z"
+}
