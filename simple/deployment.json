@@ -1,0 +1,101 @@
+{
+  "network": "sepolia",
+  "rpc": "https://sepolia-rollup.arbitrum.io/rpc",
+  "contractName": "VerifierWrapper",
+  "contractAddress": "0x7a5f36a46565089F29ccdDf2C6CDc6ee1E458625",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "verifier",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "name": "ProofVerified",
+      "type": "event",
+      "signature": "0x67138ba576c85b9348a42249a156ac9e82c361ab57372970c581a0c36c9673e9"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[2]",
+          "name": "_pA",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[2][2]",
+          "name": "_pB",
+          "type": "uint256[2][2]"
+        },
+        {
+          "internalType": "uint256[2]",
+          "name": "_pC",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[1]",
+          "name": "_pubSignals",
+          "type": "uint256[1]"
+        }
+      ],
+      "name": "verifyProof",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true,
+      "signature": "0x43753b4d"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256[2]",
+          "name": "a",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[2][2]",
+          "name": "b",
+          "type": "uint256[2][2]"
+        },
+        {
+          "internalType": "uint256[2]",
+          "name": "c",
+          "type": "uint256[2]"
+        },
+        {
+          "internalType": "uint256[1]",
+          "name": "input",
+          "type": "uint256[1]"
+        }
+      ],
+      "name": "verifyProofOptimized",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function",
+      "signature": "0xaabe1b96"
+    }
+  ],
+  "isOptimized": true,
+  "deployedAt": "2025-11-11T09:47:41.962Z"
+}
