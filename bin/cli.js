@@ -16,6 +16,7 @@ const {compileCircuit} = require('../lib/compile');
 const {testCircuit} = require('../lib/test'); 
 const {deployVerifier} = require('../lib/deploy');
 const {verifyProof} = require('../lib/verify');
+const { deployWithBridge } = require('../lib/deployWithBridge');
 
 /**
  * Define the `compile` command
@@ -55,8 +56,17 @@ program
   .option('--optimized', 'Enable verifier optimization and deploy wrapper contract')
   .option('--network <network>', 'Specify target network: one | nova | sepolia | orbit', 'one')
   .option('--rpc <rpcUrl>', 'Custom RPC endpoint (for Orbit or local chains)')
+  .option(
+    '--bridge-l1',
+    'Enable cross-chain deployment (deploy verifier on L2 + receiver on L1 and configure relayer)',
+    false
+  )
   .action((folder, privateKey, options) => {
-    deployVerifier(folder, privateKey, options);
+    if (options.bridgeL1) {
+      deployWithBridge(folder, privateKey);
+    } else {
+      deployVerifier(folder, privateKey, options);
+    }
   });
 
 
