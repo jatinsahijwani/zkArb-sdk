@@ -1,10 +1,10 @@
 const fs = require("fs-extra");
 const path = require("path");
 const { compileCircuit } = require("../lib/compile"); 
-const {testCircuit} = require("../lib/test");
+const {deployVerifier} = require('../lib/deploy');
 const tempDir = path.join(__dirname, "temp_tests");
 
-describe("zkArb test command", () => {
+describe("zkArb deploy command", () => {
   const circuitPath = path.join(__dirname,"circom", "simple.circom");
   beforeAll(async () => {
     await fs.ensureDir(tempDir);
@@ -14,19 +14,25 @@ describe("zkArb test command", () => {
     await fs.remove(tempDir);
   });
 
-  test("compiles circuit successfully and test locally", async () => {
+  test("compiles circuit successfully", async () => {
     await compileCircuit(circuitPath);
     const baseName = path.basename(circuitPath, ".circom");
     const outDir = path.join(process.cwd(), baseName);
 
-    await testCircuit(outDir, path.join(__dirname, "json", "simple.json"));
+    expect(fs.existsSync(path.join(outDir, "verifier.sol"))).toBe(true);
+    const verifierPath = path.join(outDir, "verifier.sol");
+    console.log("Verifier.sol path:", verifierPath);
+    await deployVerifier(outDir, "0x566d6a0f09b905746f0525805bf7f1ee92d5e4af9b9e58319123587e4564ce6b");
+    const deploymentInfoPath = path.join(outDir, "deployment.json");
+    expect(fs.existsSync(deploymentInfoPath)).toBe(true);
+    console.log("Deployment info path:", deploymentInfoPath);
 
-    expect(fs.existsSync(path.join(outDir, `proof.json`))).toBe(true);
-    expect(fs.existsSync(path.join(outDir, `public.json`))).toBe(true);
-
+    //cleanup act
     const wasmDir = path.join(outDir, `${baseName}_js`);
     if (await fs.pathExists(wasmDir)) await fs.remove(wasmDir);
     if (await fs.pathExists(outDir)) await fs.remove(outDir);
+    
+    //confirm deletion
     expect(await fs.pathExists(outDir)).toBe(false);
     expect(await fs.pathExists(wasmDir)).toBe(false);
   });
