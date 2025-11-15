@@ -125,3 +125,5 @@ console.log(result ? "Valid proof" : "Invalid Proof");
 | npx zkarb-sdk test <output-folder> <path-to-input.json> | Tests the Circom logic locally using ZK Proofs        |
 | npx zkarb-sdk deploy <path-to-generated-folder> <PRIVATE_KEY> [--optimized] [--network one,nova,sepolia,orbit] [--rpc <custom-rpc-url>] [--bridge-l1] | Deploys the verifier contract to Arbitrum, according to options choosed        |
 | verifyProof(input,"<relative-path-to-output-folder>") *(programmatic only)* | Generates proof and verifies it on-chain using deployed contract |
+
+
