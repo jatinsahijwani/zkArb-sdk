@@ -2,6 +2,8 @@ const fs = require("fs-extra");
 const path = require("path");
 const { compileCircuit } = require("../lib/compile"); 
 const {deployVerifier} = require('../lib/deploy');
+const {verifyProof} = require('../lib/verify');
+
 const tempDir = path.join(__dirname, "temp_tests");
 
 describe("zkArb deploy command", () => {
@@ -27,7 +29,11 @@ describe("zkArb deploy command", () => {
     expect(fs.existsSync(deploymentInfoPath)).toBe(true);
     console.log("Deployment info path:", deploymentInfoPath);
 
-    //cleanup act
+    const input = fs.readFileSync(path.join(__dirname, "json", "simple.json"), "utf8");
+    const result = await verifyProof(JSON.parse(input), outDir);
+    console.log("Verification result:", result);
+    expect(result.result).toBe(true);
+    // cleanup act
     const wasmDir = path.join(outDir, `${baseName}_js`);
     if (await fs.pathExists(wasmDir)) await fs.remove(wasmDir);
     if (await fs.pathExists(outDir)) await fs.remove(outDir);
