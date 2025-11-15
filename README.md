@@ -108,7 +108,7 @@ const result = await verifyAndEmit({
   input: {
     //your circuit input goes here
   },
-  "<relative-path-to-generated-folder>",
+  "<relative-path-to-generated-folder>", //folder containing artifacts generated during compile process
   "private-key>" //for bridging zk proof from l2 to l1
 });
 
