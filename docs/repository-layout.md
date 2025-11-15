@@ -13,6 +13,7 @@ zkArb-sdk/
 ├── .github/
 │   ├── workflows/
 │   │   └── test.yml
+│   │   └── publish.yml
 ├── bin/
 │   └── circom-linux-amd64
 │   └── circom-macos-amd64
@@ -27,18 +28,35 @@ zkArb-sdk/
 │   ├── cross-platform-compatibility.md
 │   └── repository-layout.md
 │   ├── test-suite.md
+├── examples/
+│   ├── ageCheck
+│   ├── hash
+│   ├── multiplier
 ├── lib/
 │   └── compile.js
+│   └── deploy.js
+│   └── deployWithBridge.js
 │   └── getCircomPath.js
+│   └── test.js
+│   └── verify.js
+│   └── verifyAndEmit.js
+├── orbit-example/
 ├── ptau/
 │   └── pot12_final.ptau
+├── scripts/
+│   │   └── addBridgeSupport.js
+│   │   └── generateL1Receiver.js
 ├── test/
 │   ├── circom/
 │   │   └── hash.circom
 │   │   └── multiplier.circom
 │   │   └── simple.circom
 │   │   └── voter.circom
+│   ├── json/
+│   │   └── simple.json
 │   └── compile.test.js
+│   └── deployAndVerify.test.js
+│   └── test.test.js
 ├── .gitignore
 ├── LICENSE
 ├── package-lock.json
