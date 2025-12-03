@@ -3,14 +3,14 @@
 ## Overview
 This document compares verification costs between Orbit (custom chain) and Arbitrum One (main L2).
 
-    ## Comparison Table
-    | Property | Orbit | Arbitrum One |
-    |---------|--------|---------------|
-    | Avg Gas Used | 214,710 | 214,710 |
-    | Gas Price | Low | ~1 gwei |
-    | Latency | Very low | Moderate |
-    | Execution Variance | Minimal | High |
-    | Proof Verification Cost | 0.021471 ETH | 0.219 ETH |
+## Comparison Table
+| Property | Orbit | Arbitrum One |
+|---------|--------|---------------|
+| Avg Gas Used | 214,710 | 214,710 |
+| Gas Price | Low | ~1 gwei |
+| Latency | Very low | Moderate |
+| Execution Variance | Minimal | High |
+| Proof Verification Cost | 0.021471 ETH | 0.219 ETH |
 
 ## Key Findings
 - Orbit is cheaper due to customizable Nitro parameters
