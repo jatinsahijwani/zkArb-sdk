@@ -3,10 +3,9 @@
 const fs = require("fs");
 const path = require("path");
 
-function generateRelayer(outputDir, l2VerifierAddress, l1ReceiverAddress, l2abi, l1abi, privateKey) {
+function generateRelayer(outputDir, l2VerifierAddress, l1ReceiverAddress, l2abi, l1abi, privateKey, l2Rpc) {
   const relayerPath = path.join(outputDir, "relayer.js");
   const l1Rpc = "https://0xrpc.io/sep";
-  const l2Rpc = "https://sepolia-rollup.arbitrum.io/rpc";
   
 
   const content = `

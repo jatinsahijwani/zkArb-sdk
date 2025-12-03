@@ -63,7 +63,7 @@ program
   )
   .action((folder, privateKey, options) => {
     if (options.bridgeL1) {
-      deployWithBridge(folder, privateKey);
+      deployWithBridge(folder, privateKey, options);
     } else {
       deployVerifier(folder, privateKey, options);
     }
