@@ -2,14 +2,14 @@
 This document benchmarks the performance and gas usage of Groth16 proof verification on an Arbitrum Orbit chain. The goal is to identify execution patterns, bottlenecks, and optimization opportunities.
 
 ## 🧪 Benchmarking Environment
-- Network: Orbit local devnode (`nitro-devnode`)
-- Chain ID: 412346
-- RPC: http://localhost:8547
+- Network: Orbit local devnode (`orbit-dev-test`)
+- Chain ID: 333333
+- RPC: http://localhost:3347
 - Proof type: Groth16
 - Contract: Verifier.sol (auto-generated)
 - Wallet used:
-  - Address: 0x3f1...
-  - Private Key: (default Orbit dev key)
+  - Address: 0x3f1Eae7D46d88F08fc2F8ed27FCb2AB183EB2d0E
+  - Private Key: 0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659
 
 ## 🧭 Methodology
 1. Deploy the verifier contract to the Orbit devnode  

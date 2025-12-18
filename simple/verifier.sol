@@ -21,8 +21,6 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Groth16Verifier {
-    event ProofVerified(address indexed verifier, bool success, uint256 indexed timestamp);
-
     // Scalar field size
     uint256 constant r    = 21888242871839275222246405745257275088548364400416034343698204186575808495617;
     // Base field size
@@ -167,18 +165,4 @@ contract Groth16Verifier {
              return(0, 0x20)
          }
      }
- 
-    function verifyAndEmit(
-        uint[2] calldata _pA,
-        uint[2][2] calldata _pB,
-        uint[2] calldata _pC,
-        uint[1] calldata _pubSignals
-    ) external returns (bool) {
-        bool success = this.verifyProof(_pA, _pB, _pC, _pubSignals);
-        if (success) {
-            emit ProofVerified(msg.sender, true, block.timestamp);
-        }
-        return success;
-    }
-
-}
+ }

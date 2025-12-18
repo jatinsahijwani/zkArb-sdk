@@ -1,86 +1,83 @@
-# 🚀 zkArb — Full Local Reproduction Guide  
-### *Run Local Arbitrum Orbit L2 + Local ETH L1 + SDK + Relayer*
+# 🌀 Local Arbitrum Orbit (L3) Node Setup
 
-This guide explains exactly how to reproduce the **local L1 + local L2 environment** needed to test zkArb *without any real networks*.  
-Everything here is **deterministic and reproducible**.
-
----
-
-# 📦 Prerequisites
-
-Install the following:
-
-- Node.js ≥ 18  
-- PNPM or NPM  
-- Docker  
-- Foundry (Anvil)  
-- Git  
+This guide explains how to deploy a **fully working local Arbitrum Orbit (L3) node** using the official **Nitro testnode**, with:
+- Local L1 (geth)
+- Local L2 (Arbitrum Nitro)
+- Local L3 (Orbit rollup on top of L2)
+- Pre-funded accounts
+- RPC access on `localhost:3347`
 
 ---
 
-# 🏗 1. Start Local Ethereum (L1)
+## 🧩 Prerequisites
 
-We will run an L1 using **Anvil**:
+Ensure the following are installed:
+
+- Docker (v24+ recommended)
+- Docker Compose
+- Git
+- bash
+- macOS or Linux
+
+Verify Docker:
+```bash
+docker --version
+docker compose version
+```
+
+# Step 1 : Clone Nitro Repo
 
 ```bash
-anvil --port 8547 --chain-id 1337
+git clone --recurse-submodules https://github.com/OffchainLabs/nitro.git
+cd nitro/nitro-testnode
 ```
 
-This gives you:
-Local RPC → http://127.0.0.1:8547
+# 🚀 Step 2: Initialize and Deploy Local Orbit (L3) Node
 
-You may use any default anvil private key, but in our system the relayer always uses:
-0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659
-
-# 🏗 2. Start Local Arbitrum Orbit L2 Node
-
-Clone the official Orbit dev node:
-
-```
-git clone https://github.com/OffchainLabs/nitro-devnode.git
-cd nitro-devnode
-./run-dev-node.sh
+```bash
+./test-node.bash --init --l3node --dev
 ```
 
-When the node boots, you get:
-Purpose	URL
-L2 RPC (HTTP)	http://localhost:8545
+### What this command does
 
-Orbit local comes with a deterministic signer:
+| Component | Description |
+|---------|-------------|
+| **L1** | Starts a local Ethereum execution layer (geth) |
+| **L2** | Deploys and runs a local Arbitrum Nitro (L2) chain |
+| **L3** | Deploys an **Arbitrum Orbit rollup (L3)** on top of the local L2 |
+| **Contracts** | Deploys the L3 rollup, inbox, outbox, and bridge contracts on L2 |
+| **Config** | Generates `l3_chain_info.json`, required for the L3 node to start |
+| **Funding** | Pre-funds development accounts on L1, L2, and L3 |
+| **RPC** | Exposes JSON-RPC endpoints for L1, L2, and L3 |
 
-```
-Address: 0x3f1Eae7D46d88F08fc2F8ed27FCb2AB183EB2d0E
-Private key: 0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659
-```
+> ⚠️ **Important**  
+> Running with only `--dev` does **not** deploy an L3 chain.  
+> The `--l3node` flag is **mandatory** to deploy and run an Arbitrum Orbit (L3) node.
 
-This is the same key used to deploy ALL contracts on local Orbit L2.
+### RPC Endpoints
 
-# 🔧 3. Update RPC URLs in the SDK + Relayer
+| Chain | Description | RPC Endpoint |
+|------|------------|--------------|
+| **L1** | Local Ethereum (geth) | http://localhost:8545 |
+| **L2** | Local Arbitrum Nitro (Arb One–like) | http://localhost:8547 |
+| **L3 (Orbit)** | Local Arbitrum Orbit rollup | http://localhost:3347 |
 
-```
-L1 RPC : http://127.0.0.1:8547
-L2 RPC : http://localhost:8545
-```
 
-⚠️ Important:
-Do NOT use wss:// — Orbit local dev node does not expose WebSockets.
-The relayer must use HTTP polling mode.
+### Pre-funded wallets
 
-# ⚠️ Notes & Limitations
+### Pre-funded Wallet (Available on L1, L2, and L3)
 
-- Orbit local node does NOT support WebSockets
-→ always use HTTP polling
-- Both chains mine instantly
-- Orbit default private key is always the same
-- No bridging needed between L1/L2 in dev mode
+The following development wallet is **pre-funded and usable across all three chains**:
+- L1 (geth)
+- L2 (Arbitrum Nitro)
+- L3 (Arbitrum Orbit)
 
-🎉 You’re Done!
+> ⚠️ **Warning**  
+> This private key is for **local development only**.  
+> **Never use it on public testnets or mainnet.**
 
-You now have a fully working:
-
-✔ Local Orbit L2
-✔ Local Ethereum L1
-✔ zkArb SDK wired to localhost
-✔ Verifier & Receiver deployed
-✔ Relayer working via HTTP polling
-✔ Full Proof → Event → Relay → L1 workflow
+| Network | RPC Endpoint | Public Address | Private Key |
+|------|-------------|----------------|-------------|
+| **L1 (geth)** | http://localhost:8545 | `0x3f1Eae7D46d88F08fc2F8ed27FCb2AB183EB2d0E` | `0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659` |
+| **L2 (Arbitrum Nitro)** | http://localhost:8547 | `0x3f1Eae7D46d88F08fc2F8ed27FCb2AB183EB2d0E` | `0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659` |
+| **L3 (Orbit)** | http://localhost:3347 | `0x3f1Eae7D46d88F08fc2F8ed27FCb2AB183EB2d0E` | `0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659` |

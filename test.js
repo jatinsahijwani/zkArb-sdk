@@ -1,11 +1,10 @@
-const {verifyAndEmit} = require("./lib/verifyAndEmit");
+const {verifyProof} = require("./lib/verify");
 
 async function main() {
     const path = "./simple";
     const input = {"a" : "1", "b" : "34"};
-    const pvtkey = "0xb6b15c8cb491557369f3c7d2c287b053eb229daa9c22138887752191c9520659";
 
-    const result = await verifyAndEmit(input, path, pvtkey);
+    const result = await verifyProof(input, path);
     console.log("Result:", result);
 }
 

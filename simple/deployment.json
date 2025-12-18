@@ -1,70 +1,9 @@
 {
-  "network": "sepolia",
-  "rpc": "http://localhost:8547",
+  "network": "orbit",
+  "rpc": "http://localhost:3347",
   "contractName": "Groth16Verifier",
-  "contractAddress": "0xDB2D15a3EB70C347E0D2C2c7861cAFb946baAb48",
+  "contractAddress": "0x1294b86822ff4976BfE136cB06CF43eC7FCF2574",
   "abi": [
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "verifier",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "bool",
-          "name": "success",
-          "type": "bool"
-        },
-        {
-          "indexed": true,
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "name": "ProofVerified",
-      "type": "event",
-      "signature": "0x1a3c3d9ea4bb433a209943b5a877ec79bb67f94676c75ccada8c47396e50179c"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256[2]",
-          "name": "_pA",
-          "type": "uint256[2]"
-        },
-        {
-          "internalType": "uint256[2][2]",
-          "name": "_pB",
-          "type": "uint256[2][2]"
-        },
-        {
-          "internalType": "uint256[2]",
-          "name": "_pC",
-          "type": "uint256[2]"
-        },
-        {
-          "internalType": "uint256[1]",
-          "name": "_pubSignals",
-          "type": "uint256[1]"
-        }
-      ],
-      "name": "verifyAndEmit",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x4babe26b"
-    },
     {
       "inputs": [
         {
@@ -103,5 +42,5 @@
     }
   ],
   "isOptimized": false,
-  "deployedAt": "2025-12-02T19:01:52.007Z"
+  "deployedAt": "2025-12-17T06:42:38.938Z"
 }
