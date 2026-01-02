@@ -1,4 +1,3 @@
-# zkArb SDK
 
 - [Build Artifacts](build-artifacts.md)
 - [CLI Outline](cli-outline.md)
