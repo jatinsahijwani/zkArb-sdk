@@ -109,3 +109,11 @@ It includes:
 - Package name, version, and author information  
 - Dependencies and scripts  
 - Entry points for the CLI (e.g., linking `bin/cli.js` to a global `zkArb` command)
+
+
+---
+
+### 🔙 Back to Documentation Index
+
+← **[Go back to Index](index.md)**
+

@@ -35,4 +35,11 @@ The project uses **Jest** (or your testing framework, adjust accordingly) for au
 | `npm test` | Runs all test files in the `tests/` directory |
 | `npm run test:compile` | Runs tests only related to circuit compilation |
 
+
+
 ---
+
+### 🔙 Back to Documentation Index
+
+← **[Go back to Index](index.md)**
+

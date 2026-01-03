@@ -22,4 +22,10 @@ The compilation process will generate files like:
 - `.wasm` — WebAssembly file for witness generation  
 - `.zkey` — proving key for proof generation  
 
+
 ---
+
+### 🔙 Back to Documentation Index
+
+← **[Go back to Index](index.md)**
+

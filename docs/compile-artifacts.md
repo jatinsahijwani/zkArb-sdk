@@ -101,3 +101,11 @@ This file is compiled during the `npm test` command or when directly invoked via
 | Command | Output Folder | Main Files Generated |
 |----------|----------------|----------------------|
 | `npx zkarb-sdk compile test/circom/simple.circom` | `simple/` | `.zkey`, `.r1cs`, `.wasm`, `.sol` |
+
+
+---
+
+### 🔙 Back to Documentation Index
+
+← **[Go back to Index](index.md)**
+
