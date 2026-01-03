@@ -18,8 +18,17 @@ It uses automated scripts to verify the correctness of generated build artifacts
 ```
 
 zkArb-sdk/
-├── tests/
-│ ├── compile.test.js # All possible tests for the compile function
+├── test/
+│   ├── circom/
+│   │   └── ageCheck.circom
+│   │   └── hash.circom
+│   │   └── multiplier.circom
+│   │   └── simple.circom
+│   ├── json/
+│   │   └── simple.json
+│   └── compile.test.js
+│   └── deployAndVerify.test.js
+│   └── test.test.js
 
 
 ```
@@ -33,7 +42,6 @@ The project uses **Jest** (or your testing framework, adjust accordingly) for au
 | Command | Description |
 |----------|-------------|
 | `npm test` | Runs all test files in the `tests/` directory |
-| `npm run test:compile` | Runs tests only related to circuit compilation |
 
 
 
