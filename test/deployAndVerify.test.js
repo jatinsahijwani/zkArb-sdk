@@ -24,7 +24,7 @@ describe("zkArb deploy command", () => {
     expect(fs.existsSync(path.join(outDir, "verifier.sol"))).toBe(true);
     const verifierPath = path.join(outDir, "verifier.sol");
     console.log("Verifier.sol path:", verifierPath);
-    await deployVerifier(outDir, "0x566d6a0f09b905746f0525805bf7f1ee92d5e4af9b9e58319123587e4564ce6b");
+    await deployVerifier(outDir, "5fa81c25925d4bb6654e10772da9d9ab495e3bc0f6a29b78d5c4165e385e82ab");
     const deploymentInfoPath = path.join(outDir, "deployment.json");
     expect(fs.existsSync(deploymentInfoPath)).toBe(true);
     console.log("Deployment info path:", deploymentInfoPath);
