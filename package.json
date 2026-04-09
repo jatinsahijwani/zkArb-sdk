@@ -1,6 +1,6 @@
 {
   "name": "zkarb-sdk",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Zero-knowledge SDK for Circom → Solidity → Arbitrum verifier deployment and proof verification.",
   "main": "./bin/index.js",
   "bin": {
@@ -45,6 +45,7 @@
     "lib",
     "ptau",
     "scripts",
+    "circomlib",
     "pot12_0000.ptau",
     "pot12_0001.ptau",
     "README.md"
